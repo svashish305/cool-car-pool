@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
@@ -12,19 +12,26 @@ import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+    ;
+import { SearchComponent } from './search/search.component'
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule,
-        BrowserAnimationsModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent
+        ,
+        SearchComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

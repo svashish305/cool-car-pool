@@ -1,0 +1,12 @@
+<!-- <p>search works!</p> -->
+<form class="example-form" [formGroup]="searchForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Source</mat-label>
+    <input matInput placeholder="Start from" formControlName="source">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Destination</mat-label>
+    <input matInput placeholder="Get To" formControlName="destination">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="fetchList()">Search</button>
+</form>
