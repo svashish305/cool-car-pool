@@ -27,7 +27,10 @@ export class SearchComponent implements OnInit {
   }
 
   fetchList() {
-    console.log(this.users)
+    this.foundDrivers = this.users.filter(user => (user.id !== this.user.id) && (user.source === this.searchForm.value.source) && (user.destination === this.searchForm.value.destination))
+    console.log('matched with ', this.foundDrivers)
+
+    console.table(this.users)
   }
 
 }

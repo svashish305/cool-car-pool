@@ -19,12 +19,12 @@ export class AddEditComponent implements OnInit {
         private router: Router,
         private accountService: AccountService,
         private alertService: AlertService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
         this.isAddMode = !this.id;
-        
+
         // password not required in edit mode
         const passwordValidators = [Validators.minLength(6)];
         if (this.isAddMode) {
@@ -35,7 +35,9 @@ export class AddEditComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', passwordValidators]
+            password: ['', passwordValidators],
+            source: ['', Validators.required],
+            destination: ['', Validators.required],
         });
 
         if (!this.isAddMode) {
@@ -45,6 +47,8 @@ export class AddEditComponent implements OnInit {
                     this.f.firstName.setValue(x.firstName);
                     this.f.lastName.setValue(x.lastName);
                     this.f.username.setValue(x.username);
+                    this.f.source.setValue(x.source);
+                    this.f.destination.setValue(x.destination);
                 });
         }
     }
