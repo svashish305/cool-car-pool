@@ -15,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ;
 import { SearchComponent } from './search/search.component'
 import { MaterialModule } from './material/material.module';;
-import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
+import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { MapDialogComponent } from './map-dialog/map-dialog.component'
 
 @NgModule({
@@ -26,17 +27,19 @@ import { MapDialogComponent } from './map-dialog/map-dialog.component'
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        GoogleMapsModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent
         ,
-        SearchComponent,
+        SearchComponent
+        ,
         MatchedUsersListComponent
-,
-        MapDialogComponent    ],
+        ,
+        MapDialogComponent],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

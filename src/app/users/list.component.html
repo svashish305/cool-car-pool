@@ -6,6 +6,8 @@
             <th style="width: 30%">First Name</th>
             <th style="width: 30%">Last Name</th>
             <th style="width: 30%">Username</th>
+            <th style="width: 30%">Source</th>
+            <th style="width: 30%">Destination</th>
             <th style="width: 10%"></th>
         </tr>
     </thead>
@@ -14,9 +16,12 @@
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.username}}</td>
+            <td>{{user.source}}</td>
+            <td>{{user.destination}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
+                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user"
+                    [disabled]="user.isDeleting">
                     <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
                     <span *ngIf="!user.isDeleting">Delete</span>
                 </button>
