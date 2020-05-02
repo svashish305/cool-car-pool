@@ -11,8 +11,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
   @Input() user: User
-  users: User[] = []
-  foundDrivers: any[] = []
+  source: string
+  destination: string
+  showMatches: boolean = false
+
   searchForm = new FormGroup({
     source: new FormControl(''),
     destination: new FormControl('')
@@ -21,16 +23,18 @@ export class SearchComponent implements OnInit {
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.accountService.getAll()
-      .pipe(first())
-      .subscribe(users => this.users = users);
+    this.source = this.searchForm.value.source
+    this.destination = this.searchForm.value.destination
   }
 
-  fetchList() {
-    this.foundDrivers = this.users.filter(user => (user.id !== this.user.id) && (user.source === this.searchForm.value.source) && (user.destination === this.searchForm.value.destination))
-    console.log('matched with ', this.foundDrivers)
+  clearInput() {
+    this.source = ''
+    this.destination = ''
+    this.showMatches = false
+  }
 
-    console.table(this.users)
+  handleSearch(searchStatus: boolean) {
+    this.showMatches = searchStatus
   }
 
 }

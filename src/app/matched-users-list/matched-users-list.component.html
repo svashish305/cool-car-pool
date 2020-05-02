@@ -1,0 +1,12 @@
+<!-- {{foundDrivers | json}} -->
+<div class="container pos-list">
+  <mat-label *ngIf="foundDrivers.length == 0">Loading...</mat-label>
+  <mat-label *ngIf="foundDrivers.length > 0" style="padding-top: 20px;">Riders for you: </mat-label>
+  <mat-nav-list *ngIf="foundDrivers.length > 0">
+    <mat-list-item *ngFor="let driver of foundDrivers">
+      <a matLine>{{driver.firstName}} {{driver.lastName}}</a>
+      <button mat-raised-button color="accent" (click)="openDialog(driver.id)">
+      </button>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

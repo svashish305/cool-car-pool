@@ -14,7 +14,9 @@ import { HomeComponent } from './home';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ;
 import { SearchComponent } from './search/search.component'
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './material/material.module';;
+import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
+import { MapDialogComponent } from './map-dialog/map-dialog.component'
 
 @NgModule({
     imports: [
@@ -31,8 +33,10 @@ import { MaterialModule } from './material/material.module';
         AlertComponent,
         HomeComponent
         ,
-        SearchComponent
-    ],
+        SearchComponent,
+        MatchedUsersListComponent
+,
+        MapDialogComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

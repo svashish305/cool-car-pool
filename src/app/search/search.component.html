@@ -2,11 +2,16 @@
 <form class="example-form" [formGroup]="searchForm">
   <mat-form-field class="example-full-width">
     <mat-label>Source</mat-label>
-    <input matInput placeholder="Start from" formControlName="source">
+    <input matInput placeholder="Start from" formControlName="source" [(ngModel)]="source" ngDefaultControl>
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Destination</mat-label>
-    <input matInput placeholder="Get To" formControlName="destination">
+    <input matInput placeholder="Get To" formControlName="destination" [(ngModel)]="destination" ngDefaultControl>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="fetchList()">Search</button>
+  <button mat-raised-button color="primary" (click)="showMatches = true">Search</button>
+  <button mat-raised-button color="accent" style="margin-left: 20px;" (click)="clearInput()">Clear</button>
 </form>
+
+<app-matched-users-list *ngIf="showMatches" [user]="user" [source]="source" [destination]="destination"
+  (searchStatus)=handleSearch($event)>
+</app-matched-users-list>
