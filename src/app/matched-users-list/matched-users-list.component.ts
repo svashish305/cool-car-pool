@@ -16,17 +16,24 @@ export class MatchedUsersListComponent implements OnInit {
   @Input() destination: string
   @Output() private searchStatus = new EventEmitter<boolean>();
   foundDrivers: User[] = []
+  notFound: boolean = true
 
   constructor(private accountService: AccountService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.accountService.getAll()
-      .pipe(first())
-      .subscribe(users => {
-        this.foundDrivers = users.filter(user => (user.id !== this.user.id) && (user.source === this.source) && (user.destination === this.destination))
-        if (this.foundDrivers.length > 0) this.searchStatus.emit(true)
-      });
+    if (this.source.length == 0 || this.destination.length == 0)
+      this.notFound = true
+    else
+      this.accountService.getAll()
+        .pipe(first())
+        .subscribe(users => {
+          this.foundDrivers = users.filter(user => (user.id !== this.user.id) && (user.source === this.source) && (user.destination === this.destination))
+          if (this.foundDrivers.length > 0) {
+            this.searchStatus.emit(true)
+            this.notFound = false
+          }
+        });
   }
 
   openDialog(id) {
