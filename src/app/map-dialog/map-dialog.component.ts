@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-map-dialog',
@@ -9,13 +10,14 @@ import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 export class MapDialogComponent implements OnInit {
   @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
 
-  center = { lat: 24, lng: 12 };
+  center = { lat: 17.462600, lng: 78.339950 };
   markerOptions = { draggable: false };
   markerPositions: google.maps.LatLngLiteral[] = [];
   zoom = 4;
   display?: google.maps.LatLngLiteral;
 
-  constructor() { }
+
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +36,12 @@ export class MapDialogComponent implements OnInit {
 
   removeLastMarker() {
     this.markerPositions.pop();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }

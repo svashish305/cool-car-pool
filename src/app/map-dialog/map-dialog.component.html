@@ -1,4 +1,6 @@
-<p>Confirm Ride</p>
+<h3 style="font-weight: 900;">Confirm Ride</h3>
+<!-- <div id="map"> -->
+<!-- </div> -->
 
 <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)"
   (mapMousemove)="move($event)" (mapRightclick)="removeLastMarker()">
@@ -10,4 +12,4 @@
 <div>Latitude: {{display?.lat}}</div>
 <div>Longitude: {{display?.lng}}</div>
 
-<button mat-button color="primary">Confirm</button>
+<button mat-raised-button color="primary" (click)="openSnackBar('Ride Confirmed!', 'DISMISS')">Confirm</button>
