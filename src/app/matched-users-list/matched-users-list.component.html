@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-label *ngIf="foundDrivers.length > 0" style="padding-top: 20px;">Riders for you: </mat-label>
+<div class="container" style="margin-top: 50px;">
+  <mat-label *ngIf="foundDrivers.length > 0" style="padding-top: 20px;">Riders in your location: </mat-label>
   <mat-nav-list *ngIf="foundDrivers.length > 0">
     <mat-list-item *ngFor="let driver of foundDrivers">
       <a matLine>{{driver.firstName}} {{driver.lastName}}</a>

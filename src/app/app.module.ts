@@ -10,17 +10,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
-import { HomeComponent } from './home';;
+import { HomeComponent } from './home';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component'
-import { MaterialModule } from './material/material.module';;
+import { MaterialModule } from './material/material.module'
 import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
-import { GoogleMapsModule } from '@angular/google-maps';
+import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-import { environment } from '@environments/environment';;
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
+import { environment } from '@environments/environment'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
     imports: [
@@ -31,7 +30,6 @@ import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        GoogleMapsModule,
         AgmCoreModule.forRoot({ // @agm/core
             apiKey: environment.googleMapApiKey,
         }),
@@ -43,7 +41,7 @@ import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
         AlertComponent,
         HomeComponent,
         SearchComponent,
-        MatchedUsersListComponent,
+        MatchedUsersListComponent,
         ConfirmRideComponent
     ],
     providers: [
