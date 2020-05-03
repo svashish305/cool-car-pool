@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 import { first } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-import { MapDialogComponent } from '@app/map-dialog/map-dialog.component';
-
+import { DataService } from '@app/data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-matched-users-list',
   templateUrl: './matched-users-list.component.html',
@@ -18,10 +17,17 @@ export class MatchedUsersListComponent implements OnInit {
   foundDrivers: User[] = []
   notFound: boolean = true
 
-  constructor(private accountService: AccountService, public dialog: MatDialog) {
+  constructor(
+    private router: Router,
+    private accountService: AccountService,
+    private dataService: DataService
+  ) {
   }
 
   ngOnInit(): void {
+    this.dataService.setOption('source', this.source)
+    this.dataService.setOption('destination', this.destination)
+
     if (this.source.length == 0 || this.destination.length == 0)
       this.notFound = true
     else
@@ -36,12 +42,8 @@ export class MatchedUsersListComponent implements OnInit {
         });
   }
 
-  openDialog(id) {
-    const dialogRef = this.dialog.open(MapDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  goToRideConfirmationPage() {
+    this.router.navigate(['confirm-ride'])
   }
 
 }

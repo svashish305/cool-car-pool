@@ -11,13 +11,16 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';;
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-    ;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component'
 import { MaterialModule } from './material/material.module';;
 import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { MapDialogComponent } from './map-dialog/map-dialog.component'
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
+import { environment } from '@environments/environment';;
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
 
 @NgModule({
     imports: [
@@ -28,24 +31,27 @@ import { MapDialogComponent } from './map-dialog/map-dialog.component'
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        GoogleMapsModule
+        GoogleMapsModule,
+        AgmCoreModule.forRoot({ // @agm/core
+            apiKey: environment.googleMapApiKey,
+        }),
+        AgmDirectionModule,
+        NgbModule      // agm-direction
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
-        ,
-        SearchComponent
-        ,
-        MatchedUsersListComponent
-        ,
-        MapDialogComponent],
+        HomeComponent,
+        SearchComponent,
+        MatchedUsersListComponent,
+        ConfirmRideComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
         // provider used to create fake backend
-        fakeBackendProvider
+        fakeBackendProvider,
+        GoogleMapsAPIWrapper
     ],
     bootstrap: [AppComponent]
 })
