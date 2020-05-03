@@ -15,7 +15,6 @@ export class MatchedUsersListComponent implements OnInit {
   @Input() destination: string
   @Output() private searchStatus = new EventEmitter<boolean>();
   foundDrivers: User[] = []
-  notFound: boolean = true
 
   constructor(
     private router: Router,
@@ -28,8 +27,9 @@ export class MatchedUsersListComponent implements OnInit {
     this.dataService.setOption('source', this.source)
     this.dataService.setOption('destination', this.destination)
 
-    if (this.source.length == 0 || this.destination.length == 0)
-      this.notFound = true
+    if (this.source.length == 0 || this.destination.length == 0) {
+      alert('No Drivers Found!')
+    }
     else
       this.accountService.getAll()
         .pipe(first())
@@ -37,7 +37,8 @@ export class MatchedUsersListComponent implements OnInit {
           this.foundDrivers = users.filter(user => (user.id !== this.user.id) && (user.source === this.source) && (user.destination === this.destination))
           if (this.foundDrivers.length > 0) {
             this.searchStatus.emit(true)
-            this.notFound = false
+          } else {
+            alert('No Drivers Found!')
           }
         });
   }
