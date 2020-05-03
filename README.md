@@ -2,4 +2,7 @@
 
 Car-Pool app using Angular 9
 
-[Demo](https://www.loom.com/share/0300d0aa8132450e8d55ed154a9ac1a4)
+To run locally:
+Clone repo, in root folder, run npm i, then npm start to open in browser, and enjoy!
+
+[Demo](https://soapbox.wistia.com/videos/uwUtzsd5hR)
