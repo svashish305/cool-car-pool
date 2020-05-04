@@ -14,7 +14,6 @@ import { HomeComponent } from './home';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component'
 import { MaterialModule } from './material/material.module'
-import { MatchedUsersListComponent } from './matched-users-list/matched-users-list.component';
 import { ConfirmRideComponent } from './confirm-ride/confirm-ride.component'
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
@@ -41,7 +40,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
         AlertComponent,
         HomeComponent,
         SearchComponent,
-        MatchedUsersListComponent,
         ConfirmRideComponent
     ],
     providers: [

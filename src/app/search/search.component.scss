@@ -12,3 +12,13 @@
 .example-full-width {
   width: 100%;
 }
+
+.centerize{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+mat-label {
+  font-size: large;
+}

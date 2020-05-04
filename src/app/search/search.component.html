@@ -10,11 +10,19 @@
   </mat-form-field>
   <br />
   <button mat-raised-button color="primary" style="margin-left: 20px; margin-bottom: 10px;"
-    (click)="showMatches = true">Find Drivers</button>
+    (click)="fetchDrivers()">Find Drivers</button>
   <button mat-raised-button color="accent" style="margin-left: 20px; margin-bottom: 10px;"
     (click)="clearInput()">Clear</button>
 </form>
 <p></p>
-<app-matched-users-list *ngIf="showMatches" [user]="user" [source]="source" [destination]="destination"
-  (searchStatus)=handleSearch($event)>
-</app-matched-users-list>
+
+<div *ngIf="!clear" class="container" style="margin-top: 50px;">
+  <mat-label *ngIf="foundDrivers.length > 0" style="padding-top: 20px;">Riders in your location: </mat-label>
+  <mat-nav-list *ngIf="foundDrivers.length > 0">
+    <mat-list-item *ngFor="let driver of foundDrivers">
+      <a matLine>{{driver.firstName}} {{driver.lastName}}</a>
+      <button mat-button color="primary" (click)="goToRideConfirmationPage()"><span class="centerize">Request
+          Ride</span></button>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

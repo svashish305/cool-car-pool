@@ -1,0 +1,7 @@
+<mat-label>Confirm your Ride</mat-label>
+<agm-map #rideMap [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+  <agm-direction [origin]="source" [destination]="destination"></agm-direction>
+</agm-map>
+<button mat-raised-button color="primary" style="margin-left: 25px;"
+  (click)="openSnackBar('Ride Confirmed!', 'DISMISS')">Confirm</button>
+<button mat-raised-button color="accent" (click)="goBack()">Cancel</button>
